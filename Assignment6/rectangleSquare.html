@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/
+      HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNlvI1Bx" crossorigin="anonymous"/>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+      <title>Area of Rectangle and Square Program</title>
+
+   </head>
+   <body>
+
+      <div class="container" style="text-align: center; height: 400px; position: relative">
+         <div class="center" style=" margin: 0; position: absolute; top: 50%; left: 50%;-ms-transform: translate(-40%, -50%);  transform: translate(-40%, -50%);">
+
+            <input type="number" name="length" id="length" placeholder="Enter a Length" />
+            <br/>
+            <br/>
+            <input type="number" name="breadth" id="breadth" placeholder="Enter a breadth" />
+            <br/>
+            <br/>
+            <button onclick="findArea()">Find Area</button>
+            <br/>
+            <br/>
+            <span id="showResult" style="color: red; font-size: 20px; text-align: center"></span>
+         </div>
+      </div>
+
+   </body>
+
+   <script type="text/javascript">
+    
+    class Rectangle {
+        constructor(length, breadth) {
+            this.length = length;
+            this.breadth = breadth;
+        }
+
+        area(length , breadth) {
+            let area = parseFloat(length) * parseFloat(breadth);
+            console.log(length);
+            console.log(breadth);
+            console.log(area);
+            return area;
+        }
+    }
+
+    class Square extends Rectangle {
+        constructor(length, breadth) {
+            super(length, breadth);
+        }
+    }
+
+    function findArea() {
+        let length = document.getElementById("length").value;
+        let breadth = document.getElementById("breadth").value;
+        console.log('ggg');
+        console.log(length);
+            console.log(breadth);
+     
+        let showResult = document.getElementById("showResult");
+        let squareObj = new Square(length, breadth);
+        let area = squareObj.area(length, breadth);
+        showResult.innerText = `The Area of Square with length ${length} and breadth ${breadth} is ${area}`;
+    }
+    
+   </script>
+</html>
