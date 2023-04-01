@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNlvI1Bx"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <title>Array Assignment Question 1</title>
+  </head>
+  <body>
+    <div
+      class="container"
+      style="text-align: center; height: 400px; position: relative"
+    >
+      <div
+        class="center"
+        style="
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        "
+      >
+        <h3>Enter the length of array</h3>
+        <input type="number" name="number" id="number" />
+        <button onclick="arraySize()">Enter</button>
+        <br />
+        <br />
+
+        <label
+          id="showResult1"
+          style="color: black; font-size: 20px; text-align: center"
+        ></label>
+        <br />
+        <span
+          id="showResult2"
+          style="color: black; font-size: 20px; text-align: center"
+        ></span>
+        <br />
+        <span
+          id="showResultA"
+          style="color: black; font-size: 20px; text-align: center"
+        ></span>
+        <br />
+        <span
+          id="showResultB"
+          style="color: black; font-size: 20px; text-align: center"
+        ></span>
+        <br />
+        <span
+          id="showResultC"
+          style="color: black; font-size: 20px; text-align: center"
+        ></span>
+
+        <span
+          id="showResultD"
+          style="color: black; font-size: 20px; text-align: center"
+        ></span>
+        <br />
+        <span
+          id="showResultE"
+          style="color: black; font-size: 20px; text-align: center"
+        ></span>
+      </div>
+    </div>
+  </body>
+  <script>
+    var arraylength = 0;
+    var inputArray = [];
+
+    function arraySize() {
+      let number = document.getElementById("number").value;
+      arraylength = number;
+      console.log(arraylength);
+
+      for (let i = 0; i < arraylength; i++) {
+        let number = prompt(`Enter ${i + 1} Element`);
+        inputArray[i] = parseInt(number);
+      }
+      console.log(inputArray);
+      solveTheQuestions(inputArray);
+    }
+
+    function solveTheQuestions(arr) {
+      let showResult1 = document.getElementById("showResult1");
+      let showResult2 = document.getElementById("showResult2");
+      let showResultA = document.getElementById("showResultA");
+      let showResultB = document.getElementById("showResultB");
+      let showResultC = document.getElementById("showResultC");
+      let showResultD = document.getElementById("showResultD");
+      let showResultE = document.getElementById("showResultE");
+
+      console.log(arr);
+      let sumOfNumberAtOddPlace = arr
+        .filter((num) => num % 2 !== 0)
+        .reduce((sum, num) => sum + num);
+
+      showResult1.innerText = `Sum of numbers in odd places is ${sumOfNumberAtOddPlace}`;
+
+      let sumOfNumberAtEvenPlace = arr
+        .filter((num) => num % 2 === 0)
+        .reduce((sum, num) => sum + num);
+
+      showResult2.innerText = `Sum of numbers in even places is ${sumOfNumberAtEvenPlace}`;
+
+      // a) Print the difference between the two sums
+      let differenceBetweenTwoSum =
+        sumOfNumberAtOddPlace - sumOfNumberAtEvenPlace;
+      showResult2.innerText = `difference between the two sums is ${sumOfNumberAtEvenPlace}`;
+      console.log(
+        "difference between the two sums :" + differenceBetweenTwoSum
+      );
+
+      // b) Print the number of elements in odd places
+      let numberOfElementsAtOddPlace = arr.filter(
+        (num) => num % 2 !== 0
+      ).length;
+      console.log("numberOfElementsAtOddPlace : " + numberOfElementsAtOddPlace);
+
+      // c) Print the number of elements in even places
+      let numberOfElementsAtEvenPlace = arr.filter(
+        (num) => num % 2 === 0
+      ).length;
+      console.log(
+        "numberOfElementsAtEvenPlace : " + numberOfElementsAtEvenPlace
+      );
+
+      // d) Print the average of all elements in the array
+      let sumOfAllElements = arr.reduce((sum, num) => sum + num);
+      let averageOfAllElements = sumOfAllElements / arr.length;
+      console.log("averageOfAllElements : " + averageOfAllElements);
+
+      // e) Print GCD of Sum of Numbers at Odd Places and Sum of Numbers at Even Places
+      let gcd = 0;
+      const number1 = sumOfNumberAtOddPlace;
+      const number2 = sumOfNumberAtEvenPlace;
+      for (let i = 1; i <= number1 && i <= number2; i++) {
+        // checking if is factor of both integers
+        if (number1 % i == 0 && number2 % i == 0) {
+          gcd = i;
+        }
+      }
+
+      console.log(gcd);
+    }
+  </script>
+</html>
